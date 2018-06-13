@@ -1,3 +1,4 @@
+
 console.log('Arrays');
 
 // Task 01
@@ -9,35 +10,50 @@ console.log('Arrays');
 //     1.    without deleting this element from an array;
 //     2.    with deleting this element from an array.
 //     Display them in the console.
-
+const arr1 = [1, 2, 3, 4, 5];
+console.log(arr1[arr1.length-1]);
+const removed = arr1.pop();
+console.log(removed);
+console.log(arr1);
 // Task 02
 // RU: Создать массив любых элементов. Добавить элемент в конец массива.
-//     1. Модифицировать текущий массив
+//     1. Модифицироват текущий массив
 //     2. Создать новый массив
 //     Выведите массивы в консоль
 // EN: Create an array of any elements. Add new element to the end of this array.
 //     1. mutate current array;
 //     2. create a new array.
 //     Disply them in the conole.
-
+const arr2 = [1, 2, 3, 4, 5];
+arr2.push(6);
+console.log(arr2);
+const newArr = new Array(arr2);
+console.log(newArr);
 // Task 03
 // RU: Создать массив любых элементов.
 //     Обойти элементы массива и вывести их в консоль.
 // EN: Create an array of any elements.
 //     Iterate over this array and display each element in the console.
-
+const arr3 = [1, 2, 3, 4, 5];
+arr3.forEach(n => console.log(n));
 // Task 04
 // RU: Создать массив чисел в диапазоне от 0 до 100.
 //     Подсчитать и вывети сумму тех элементов, которые больше 50.
 // EN: Create an array of numbers in the range from 0 to 100.
 //     Calculate and display the sum of the elements, which are greater than 50.
-
+const arr4 = [1, 33, 67, 54, 3, 99, 78, 50];
+const sum = arr4.filter(el => el > 50).reduce(function(a, b) {
+    return a + b;
+});
+console.log(sum);
 // Task 05
 // RU: Создать массив строк. На основе этого массива создать строку –
 //     объдинить все элементы массива, используя определенный разделитель.
 // EN: Create an array of strings. Create a string on the basis of this array.
 //     This string should contain all elements from an array separated by certain delimeter.
-
+const arr5 = ["a", "bb", "ccc", "abcd"];
+const str = arr5.join('^');
+console.log(str);
 // Task 06
 // RU: Создать массив чисел от 1 до 20 в случайном порядке.
 //     Отcортировать массив по возрастанию. Вывести его в консоль.
@@ -45,9 +61,17 @@ console.log('Arrays');
 // EN: Create an array of numbers in the range from 1 to 20 in random order.
 //     Sort this array in ascending order. Display it in the console.
 //     Create a copy of the previous array in reverse order. Disply it in the console.
-
+const arr6 = [1, 3, 2, 20, 15, 11, 6, 19];
+const sortedArray = arr6.sort(function(a, b) {
+    return a - b;
+})
+console.log(sortedArray);
+const reversedArray = arr6.sort(function(a, b) {
+    return a + b;
+})
+console.log(reversedArray);
 // Task 07
-// RU: Создать массив [3, 0, -1, 12, -2, -4, 0, 7, 2]
+// EU: Создать массив [3, 0, -1, 12, -2, -4, 0, 7, 2]
 //     На его основе создать новый массив [-1, -2, -4, 0, 0, 3, 12, 7, 2].
 //     первая часть - отрицательные числа в том же порядке
 //     вторая часть - нули
@@ -57,13 +81,18 @@ console.log('Arrays');
 //     First part - negative values from the original array in the same order,
 //     Next part - zeroes
 //     Last part - positive values from the original array in the same order.
-
+const arr7 = [3, 0, -1, 12, -2, -4, 0, 7, 2];
+const negativeValues = arr7.filter(el => el < 0);
+const zeroes = arr7.filter(el => el === 0);
+const positiveValues = arr7.filter(el => el > 0);
+const newArray = negativeValues.concat(zeroes, positiveValues);
+console.log(newArray);
 // Task 08
 // RU: 1. Создайте массив styles с элементами "Jazz", "Blues".
 //     2. Добавьте в конец значение "Rock-n-Roll".
 //     3. Замените предпоследнее значение с конца на "Classics".
 //     4. Удалите первsый элемент из массива и выведите его в консоль.
-//     5. Добавьте в начало два элемента со значениями "Rap" и "Reggae".
+//     5. Добавьте в начало два элемента значения "Rap" и "Reggae".
 //     6. Выведите массив в консоль.
 // EN: 1. Create an array styles with two elements "Jazz", "Blues".
 //     2. Add new element "Rock-n-Roll" to the end of the array.
@@ -71,19 +100,39 @@ console.log('Arrays');
 //     4. Remove the first element from the array and disply it in the console.
 //     5. Add two new elements "Rap" and "Reggae" at the begining of the array.
 //     6. Display an array in the console.
-
+const arr8 = ["Jazz", "Blues"];
+arr8.push("Rock-n-Roll");
+console.log(arr8);
+arr8.splice(-1, 1, "Classics");
+console.log(arr8);
+const firstRemoved = arr8.shift();
+console.log(firstRemoved);
+console.log(arr8);
+arr8.unshift("Rap", "Reggae");
+console.log(arr8);
 // Task 09
 // RU: Подсчитать в строке "dskjdhfkjshdfkjhsdkjureyteiruyiqywehjkh"
 //     отдельно количество букв r, k, t и вывести в консоль.
 // EN: Calculate the number of letters r, k, t in this string
 //     "dskjdhfkjshdfkjhsdkjureyteiruyiqywehjkh" and display them in the console.
-
+let str = "dskjdhfkjshdfkjhsdkjureyteiruyiqywehjkh";
+let r = 0; 
+let k = 0;
+let t = 0;
+str.split("").filter(el =>  {
+    if(el === 'r') r++;
+    if(el === 'k') k++;
+    if(el === 't') t++;
+});
+console.log("r: " + r + " k: " + k + " t: " + t);
 // Task 10
 // RU: Создать массив любых элментов.
 //     Получить случайный элемент из массива и вывести его в консоль.
 // EN: Create an array of any elements.
 //     Get the random element from this array and display it in the console.
-
+const arr10 = [1, 2, 4, 'r', 5, 'f'];
+const el = arr10[Math.floor(Math.random()*arr10.length)];
+console.log(el);
 // Task 11
 // RU: Создать двумерный массив:
 //     1 2 3
@@ -95,13 +144,25 @@ console.log('Arrays');
 //     4 5 6
 //     7 8 9
 //     Display it in the console.
-
+const arr11 = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+for(let n of arr11) {
+    console.log(n.toString());
+};
 // Task 12
 // RU: Преобразовать массив из предыдущего задания в одномерный.
 //     Вывести его в консоль
 // EN: Transform an array from the previous task into one-dementional array.
 //     Display it in the console.
-
+const arr12 = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+console.log(arr12.reduce((prev, next) => [...prev, ...next]));
 // Task 13
 // RU: Создать массив любых элементов.
 //     На его основе получить новый массив – подмножество элементов
@@ -111,13 +172,17 @@ console.log('Arrays');
 //     Create new one on the basis of the originl array. New array should
 //     contain elements from index a to index b.
 //     Display it in the console.
+const arr13 = [1, 2, 3, 4, 5, 6, 7, 8];
+const res = arr13.slice(2, 6);
+console.log(res);
 
 // Task 14
 // RU: Создать массив любых элементов.
 //     Найти индекс указаного элемента в массиве и вывести его в консоль.
 // EN: Create an array of any elements.
 //     Find the index of a particular element in tha array and disply it in the console.
-
+const arr14 = [1, 2, 3, 4, 5];
+console.log(arr14.findIndex(el => el === 3));
 // Task 15
 // RU: Создать массив с дублями элементов. На его основе создать новый массив
 //     уникальных элементов (удалить дубли).
@@ -125,7 +190,9 @@ console.log('Arrays');
 // EN: Create an array with duplicate elements. Create new one on the basis of the originl array.
 //     Remove duplicated elements.
 //     Display it in the console.
-
+const arr15 = [1, 1, 5, 7, 3 ,5, 8, 7, 10, 8];
+const unique = new Set(arr15);
+console.log(Array.from(unique));
 // Task 16
 // RU: Создать массив с дублями. Найти первый элемент, который дублируется.
 //     Заменить этот элемент и все его копии на символ '*'.
@@ -133,6 +200,21 @@ console.log('Arrays');
 // EN: Create an array with duplicate elements. Find first duplicated element.
 //     Replace this element and all its copies with symbol '*'.
 //     Display it in the console.
+const arr16 = [1, 8, 1, 4, 2, 3, 4, 4, 2, 5, 3, 2];
+const sorted = arr16.slice().sort();
+let duplicateElement;
+for(let i = 0; i < sorted.length; i++) {
+    if(sorted[i] === sorted[i+1]) {
+        duplicateElement  =sorted[i];
+        break;
+    }
+}
+arr16.forEach((element, index, array) => {
+    if(element === duplicateElement) {
+        array[index] = '*';
+    }
+});
+console.log(arr16);
 
 // Task 17
 // RU: Создать массив целых чисел. На его основе создать массивы – представления
@@ -143,7 +225,10 @@ console.log('Arrays');
 //     Second array contains the octal representation of the elements from the original array.
 //     Third array contains the hexadecimal representation of the elements from the original array.
 //     Display them in the console.
-
+const arr17 = [1, 2, 4, 7, 11];
+console.log(arr17.map(e => e.toString(2)));
+console.log(arr17.map(e => e.toString(8)));
+console.log(arr17.map(e => e.toString(16)));
 // Task 18
 // RU: Получить из строки 'a big brown fox jumps over the lazy dog' массив слов,
 //     который содержит элементы, длина которых не больше 3 символа.
@@ -151,7 +236,9 @@ console.log('Arrays');
 // EN: Get the array of words from the string 'a big brown fox jumps over the lazy dog'.
 //     This array should contain only words, the length of which is 3 or less characters.
 //     Display it in the console.
-
+const str = 'a big brown fox jumps over the lazy dog';
+const arr18 = str.split(' ').filter(el => el.length <= 3);
+console.log(arr18)
 // Task 19
 // RU: Создать массив, который содержит строки и числа.
 //     Проверить, содержит ли массив только строки.
@@ -159,7 +246,9 @@ console.log('Arrays');
 // EN: Create an array of numbers and strings.
 //     Check whether this array contains only strings.
 //     Display the result in the console.
-
+const arr19 = [1, 'a', 'sss', 3, 'ff'];
+const res = arr19.every(el => typeof el === 'string');
+console.log(res);
 // Task 20
 // RU: Создать отсортированный массив чисел.
 //     Реализовать функцию binarySearch(arr, value), которая принимает массив
@@ -171,3 +260,18 @@ console.log('Arrays');
 //     and a value and returns the index of this value in the array or -1.
 //     Function should use binary search.
 //     Display the result in the console.
+const arr20 = [1, 2, 3, 4, 5, 6];
+
+const binarySearch = (arr, value) => {
+    let start = 0, end = arr.length - 1, middle;
+
+    while (start <= end) {
+        middle = Math.floor((start + end)/2);
+        if (value === arr[middle]) return middle;
+        else if (value < arr[middle]) end = middle - 1;
+        else start = middle + 1;
+    };
+    return -1;
+};
+
+console.log(binarySearch(arr20, 6));
