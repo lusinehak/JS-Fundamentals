@@ -255,3 +255,34 @@ console.log('Objects');
 //     4. Remove task from the list of tasks.
 //     5. Sort tasks alphabetically in asc or desc order
 //     6. Clear the list of tasks.
+class Task {
+    constructor(name, st) {
+        this.name = name;
+        this.st = st;
+    }
+
+    print() {
+        console.log("[" + this.st + "]" + this.name);
+    }
+    changeStatus(newStatus) {
+        this.st = newStatus;
+    }
+}
+
+let set = new Set();
+const t1 = new Task("task1", "new");
+const t2 = new Task("task2", "new");
+const t3 = new Task("task3", "completed");
+const t4 = new Task("task4", "new");
+const t5 = new Task("task5", "completed");
+
+set.add(t1).add(t5).add(t2).add(t4).add(t3);
+set.forEach(n => console.log(n.print()));
+t1.changeStatus("completed");
+set.forEach(n => console.log(n.print()));
+set.delete(t3);
+set.forEach(n => console.log(n.print()));
+
+set.forEach(n => console.log(n.print()));
+set.clear();
+console.log(set.size)
