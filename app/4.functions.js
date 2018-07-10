@@ -15,7 +15,11 @@ console.log('Functions');
 //     Test data:
 //     a = '1', b = '1', result = '11'
 //     a = 1, b = 1, result = '11'
-
+// console.log(conc('1', '1'));
+// console.log(conc(1, 1));
+// function conc(a, b) {
+//     return `${a}${b}`;
+// }
 // Task 2. FDE
 // RU: Создайте функцию comp, которая должна сравнивать значения
 //     двух параметров a и b и возвращать 1, если они равны и -1, если они не равны.
@@ -32,7 +36,12 @@ console.log('Functions');
 //     Test data:
 //     a = 'abc', b = 'abc', result = 1
 //     a = 'abC', b = 'abc', result = -1
+// const comp = function(a, b) {
+//    return a === b ? 1 : -1;
+// };
 
+// console.log(comp('abc', 'abc'));
+// console.log(comp('abC', 'abc'));
 // Task 3. AF
 // RU: Создайте анонимную функцию, которая должна
 //     выводить сообщение 'message in console' в коноль.
@@ -40,7 +49,9 @@ console.log('Functions');
 // EN: Create an anonymous function, which should display
 //     message 'message in console' in console.
 //     Use it as an event handler of event click of the button.
-
+// document.querySelector('button').addEventListener('click', function() {
+//     console.log('message in console');
+//     })
 // Task 4. NFE
 // RU: Создайте функцию fibo, которая должна вычислять числа Фибоначчи по формуле
 //     F0 = 0, F1 = 1, Fn = Fn-1 + Fn-2.
@@ -52,7 +63,17 @@ console.log('Functions');
 //     Create a function factorial which should calculate factorial of a number n
 //     according to the formula Fn = 1 * 2 *..*n.
 //     Use Named Function Expression (NFE).
-
+// const f1 = function fibo(n) {
+//     return n < 1 ? 0
+//         : n <= 2 ? 1
+//         : fibo(n - 1) + fibo(n - 2)
+// }
+// console.log(f1(13));
+    
+// const f2 = function factorial(n) {
+//     return n !== 1 ? n * factorial(n-1) : 1;
+// }
+// console.log(f2(5));
 // Task 5. FC
 // RU: Объявите две строчные переменные: params и body и проинициализируйте
 //     их строчными значениями, которые представляют список параметров и тело будущей функции.
@@ -62,7 +83,10 @@ console.log('Functions');
 //     which represent the list of parameters and the body of future function.
 //     Create function using these variables with help of Function Constructor (FC).
 //     Call this function.
-
+// let params = 'a, b';
+// let body = 'return a + b;';
+// var f1 = new Function(params, body);
+// console.log(f1(3, 4));
 // Task 6. ArF
 // RU: Объявите массив arr = [1, 8, 3, 5, 12, 7, 9, 11]
 //     Используя стрелочные функции создайте новый массив из элементов elem * elem,
@@ -72,12 +96,16 @@ console.log('Functions');
 //     Using arrow functions create new array which contains elem * elem.
 //     These elements should be less than 100, sort it in ascending order.
 //     Display the result in the console.
-
+// const arr = [1, 8, 3, 5, 12, 7, 9, 11];
+// const newArr = arr.map(elem => elem * elem).filter(elem => elem < 100).sort((a, b) => a - b);
+// console.log(newArr);
 // Task 7. IIFE
 // RU: Создайте конструкцию, с помощью которой выполниться выше реализованная
 //     функция conc.
 // EN: Create a construction which allows to run the above function conc.
-
+// (function conc(a, b) {
+//     console.log(`${a}${b}`);
+// })(1, 1);
 // Task 8. Arguments Object, Rest
 // RU: Создайте функцию parts, которая принимает неизвестное количество параметров.
 //     Каждый параметр – это группа предложений.
@@ -103,8 +131,12 @@ console.log('Functions');
 //     param2 = "This is the second sentence. This is a sentence with a list of items:
 //               red, blue, yellow, black."
 //     result = ["cherries, oranges, apples, bananas", "red, blue, yellow, black"].
+// const parts = (...args) => args.map(str => (/:\s*(.*)./g).exec(str)[1]);
 
+// const arg1 = "This is the first sentence. This is a sentence with a list of items: cherries, oranges, apples, bananas.";
+// const arg2 = "This is the second sentence. This is a sentence with a list of items: red, blue, yellow, black.";
 
+// console.log(parts(arg1, arg2));
 // Task 9. Optional Arguments
 // RU: Создайте функцию find(testString, test), которая должна возвращать позицию
 //     строки test в строке testString. 
@@ -124,7 +156,14 @@ console.log('Functions');
 //     testString = 'abc', result = 0
 //     testString = 'abc', test = 'd', result = -1
 //     testString = 'abc', test='a', test2='b', result = 0
-
+// function find(testString, test = testString) {
+//     return testString.indexOf(test);
+// }
+    
+// console.log(find('abc', 'b'));
+// console.log(find('abc', ));
+// console.log(find('abc', 'd'));
+// console.log(find('abc', 'a'));
 // Task 10. Function as an Object
 // RU: Создайте функцию str(), которая принимает один строчный параметр и
 //     выводит в консоль 'String is non empty', если параметр - непустая строка и
@@ -153,6 +192,16 @@ console.log('Functions');
 //     str.isNonEmptyStr(1), result = false
 //     str(), console.log('String is empty')
 //     str('a'), console.log('String is non empty')
+// function str(s) {
+//     console.log(!s ? 'String is empty' : 'String is non empty');
+// }
+// str.isNonEmptyStr = s => (!s || typeof s !== 'string') ? false : true;
+// console.log(str.isNonEmptyStr());
+// console.log(str.isNonEmptyStr(''));
+// console.log(str.isNonEmptyStr('a'));
+// console.log(str.isNonEmptyStr(1));
+// console.log(str());
+// console.log(str('a'));
 
 // Task 11. Function as a Parameter
 // RU: Создайте функцию toConsole с одним параметром. Функция должна выводить 
@@ -182,7 +231,26 @@ console.log('Functions');
 //     result = alert(My), ….
 //     console.log( splitToWords("My very long text msg") );
 //     result = ['My', 'very', 'long', 'text', 'msg']
+// function toConsole(param) {
+//     console.log(param);
+// }
+// function toAlert(param) {
+//     alert(param);
+// }
+    
+// function splitToWords(msg, callback) {
+//     const arr = msg.split(' ');
+//     if(callback) { 
+//         arr.forEach(element => { 
+//             callback(element) }); 
+//     } else { 
+//         return arr; 
+//     }
+// }
 
+// splitToWords("My very long text msg", toConsole);
+// splitToWords("My very long text msg", toAlert);
+// console.log( splitToWords("My very long text msg"));
 
 // Task 12. Function as a Result
 // RU: Создайте функцию copyright, которая должна возвращать другую функцию с
@@ -195,13 +263,24 @@ console.log('Functions');
 //     return the result. Declare the sign © ('\u00A9') inside copyright function.
 //     Test Data:
 //     console.log( copyright()('EPAM') ); result = © EPAM.
-
+// function copyright() {
+//     const sign = '\u00A9';
+//     return function(param) {
+//         return `${sign} ${param}`;
+//     }
+// }
+// console.log( copyright()('EPAM') );
 // Task 13. Function as a Result
 // RU: Задание аналогично предыдущему, но в этот раз функция copyright получает знак
 //     как свой параметр.
 // EN: This task is similar to the previous one, but in this case the function copyright takes 
 //     one parameter - sign (© ('\u00A9')).
-
+// function copyright(sign) {
+//     return function(p) {
+//         return `${sign} ${p}`;
+//     }
+// }
+// console.log(copyright('©')('EPAM'));
 // Task 14. Function as a Method
 // RU: Создайте литерал объекта employee со следующими свойствами:
 //     name: 'Ann', 
@@ -214,13 +293,22 @@ console.log('Functions');
 //     "I am Ann. I am working..."
 //     Test Data:
 //     employee.work()  result in the console "I am Ann. I am working..."
-
+// const employee = {
+//     name: 'Ann',
+//     work() {
+//         console.log(`I am ${this.name}. I am working...`)
+//     }
+// };    
+// employee.work();
 // Task 15. Borrow Method
 // RU: Создайте литерал объекта person со свойством name. 
 //     Вызовите метод work объекта employee из предыдущего задания.
 // EN: Create an object literal person with property name.
 //     Call the method work of the object employee from the previous task.
-
+// const person = {
+//     name: "Person"
+// }
+// employee.work.call(person);
 // Task 16. Memoization
 // RU: Создать функцию fiboMemo для вычисления чисел Фибоначчи по формуле 
 //     F0 = 0, F1 = 1, Fn = Fn-1 + Fn-2. Функция должна хранить те значения,
@@ -230,3 +318,33 @@ console.log('Functions');
 //     F0 = 0, F1 = 1, Fn = Fn-1 + Fn-2. The function should store the values computed earlier.
 //     Using methods console.time(), console.timeEnd() calculate the time for function fibo 
 //     and fiboMemo.
+
+// const fibo = function f(n) {
+//         return n < 1 ? 0
+//             : n <= 2 ? 1
+//             : f(n - 1) + f(n - 2)
+//     }
+// const memoizedFibo = () => {
+//     let cache = {};
+
+//     const f = n => {
+//     if (n === 0 || n === 1)
+//         return n;
+//     if (n in cache) { 
+//         return cache[n]; 
+//     } else { 
+//         let result = f(n - 1) + f(n - 2); 
+//         cache[n] = result; 
+//         return result; }
+//     }
+//     return f;
+// };
+// const fiboMemo = memoizedFibo();
+    
+// console.time();
+// console.log(fibo(25));
+// console.timeEnd();
+    
+// console.time();
+// console.log(fiboMemo(25));
+// console.timeEnd();
